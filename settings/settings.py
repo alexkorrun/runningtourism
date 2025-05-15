@@ -1,11 +1,14 @@
 from pathlib import Path
 
+from . import env_config
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY =
 
-DEBUG = True
-ALLOWED_HOSTS = []
+SECRET_KEY = env_config.CONFIG__SECRET_KEY
+
+DEBUG = env_config.CONFIG__DEBUG
+ALLOWED_HOSTS = [env_config.CONFIG__ALLOWED_HOSTS]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -67,15 +70,16 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 LANGUAGE_CODE = "ru-RU"
 TIME_ZONE = "Europe/Moscow"
 
 USE_I18N = True
-USE_TZ = True
+USE_TZ = False
 
+STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'static'
 
-STATIC_URL = "static/"
-
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
