@@ -1,7 +1,21 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-<main>
+<link rel="stylesheet" href="{% static 'css/Main3d.css' %}">
 
+<main>
+    <section class="hero-section position-relative overflow-hidden" id="hero">
+        <img src="{% static 'assets/main.jpg' %}" 
+             class="img-fluid w-100 hero-image" 
+             alt="Главное изображение" 
+             style="height: 90vh; object-fit: cover; filter: brightness(70%);">
+
+        <div class="position-absolute top-50 start-50 translate-middle text-center text-white hero-content">
+            <h1 class="display-3 fw-bold mb-3">Дружеские пробежки по всему миру</h1>
+            <p class="lead">Исследуй мир бегом — красиво, быстро и вместе</p>
+        </div>
+    </section>
 </main>
+<script src="{% static 'js/Main3d.js' %}"></script>
 {% endblock %}
