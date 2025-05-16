@@ -34,7 +34,6 @@ class EventView(ListView):
         if event_type in ['0', '1']:
             year_queryset = year_queryset.filter(event_type=event_type)
 
-        # ⚠️ Используем только .dates() — БЕЗ values_list
         years = year_queryset.dates('event_date1', 'year')
         context['years'] = sorted({d.year for d in years}, reverse=True)
 
