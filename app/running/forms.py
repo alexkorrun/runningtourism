@@ -17,6 +17,7 @@ class FeedbackForm(forms.ModelForm):
             'phone': forms.TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': '+7 (___) ___-__-__',
-                'required': True
+                'pattern': r'[\d\s\+\-\(\)]{10,}',
+                'required': True,
             }),
         }
