@@ -5,7 +5,7 @@ from mixins import StrMixin
 
 class Foto(StrMixin, models.Model):
     title = models.CharField(max_length=255)
-    image = models.BinaryField()
+    image = models.ImageField()
 
 
 class Event(StrMixin, models.Model):

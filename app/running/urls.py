@@ -4,5 +4,7 @@ from . import views
 
 
 urlpatterns: list[str] = [
-    path("", views.index, name="main")
+    path("", views.main, name="home"),
+    path("events/", views.EventView.as_view(), name="events"),
+    path("events/<int:pk>/", views.EventDetailView.as_view(), name="event_detail")
 ]

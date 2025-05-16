@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <a href="{% url 'events' %}" class="btn btn-secondary mb-4">← Назад к событиям</a>
+
+    <div class="card shadow-sm">
+        {% if event.event_foto %}
+            <img src="{{ event.event_foto.image.url }}" class="card-img-top" alt="{{ event.event_name }}">
+
+        {% endif %}
+        <div class="card-body">
+            <h2 class="card-title">{{ event.event_name }}</h2>
+            <p class="text-muted">{{ event.event_date1 }} – {{ event.event_date2 }}</p>
+            <p class="card-text">{{ event.event_description }}</p>
+
+            {% if event.event_video %}
+                <a href="{{ event.event_video }}" target="_blank" class="btn btn-outline-primary">Смотреть видео</a>
+            {% endif %}
+            {% if event.event_album %}
+                <a href="{{ event.event_album }}" target="_blank" class="btn btn-outline-secondary">Фотоальбом</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
