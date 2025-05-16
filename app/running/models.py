@@ -4,8 +4,8 @@ from mixins import StrMixin
 
 
 class Foto(StrMixin, models.Model):
-    title = models.CharField(max_length=255)
-    image = models.ImageField()
+    title = models.CharField(max_length=255, verbose_name="Название изображения")
+    image = models.ImageField(verbose_name="Изображения")
 
 
 class Event(StrMixin, models.Model):
@@ -18,16 +18,44 @@ class Event(StrMixin, models.Model):
         (1, "будущее событие"),
     ]
 
-    event_view = models.SmallIntegerField(choices=EVENT_VIEW_CHOICES)
-    event_type = models.SmallIntegerField(choices=EVENT_TYPE_CHOICES)
+    event_view = models.SmallIntegerField(
+        choices=EVENT_VIEW_CHOICES,
+        verbose_name="Видимость события"
+    )
+    event_type = models.SmallIntegerField(
+        choices=EVENT_TYPE_CHOICES,
+        verbose_name="Тип события"
+    )
 
-    event_year = models.IntegerField()
-    event_date1 = models.DateField()
-    event_date2 = models.DateField()
-    event_name = models.CharField(max_length=255)
-    event_description = models.TextField()
-    event_video = models.URLField(blank=True)
-    event_album = models.URLField(blank=True)
-    event_route = models.URLField(blank=True)
-    event_report = models.TextField(blank=True)
-    event_foto = models.ForeignKey(Foto, null=True, blank=True, on_delete=models.SET_NULL)
+    event_year = models.IntegerField(verbose_name="Год события")
+    event_date1 = models.DateField(verbose_name="Дата начала")
+    event_date2 = models.DateField(verbose_name="Дата конца")
+    event_name = models.CharField(max_length=255, verbose_name="Названия события")
+    event_description = models.TextField(verbose_name="Описания события")
+    event_video = models.URLField(blank=True, verbose_name="Ссылка на видео")
+    event_album = models.URLField(blank=True, verbose_name="Ссылка на фотоальбом")
+    event_route = models.URLField(blank=True, verbose_name="Ссылка на маршрут")
+    event_report = models.TextField(blank=True, verbose_name="Отчет события")
+
+    event_foto = models.ForeignKey(
+        Foto,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        verbose_name="Изображения события"
+    )
+
+
+class Feedback(StrMixin, models.Model):
+    name = models.CharField(
+        max_length=100,
+        blank=False,
+        null=False,
+        verbose_name="Имя"
+    )
+    phone = models.CharField(
+        max_length=110,
+        blank=True,
+        null=True,
+        verbose_name="Номер телефона"
+    )
