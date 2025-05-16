@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.views.generic import ListView, DetailView
 
 from .forms import FeedbackForm
@@ -55,7 +56,10 @@ def feedback(request):
 
         if form.is_valid():
             form.save()
-            # TODO: отправить сообщение
+            messages.success(
+                request,
+                "Форма успешно отправлена"
+            )
             return redirect(request.META.get('HTTP_REFERER', '/'))
     else:
         form = FeedbackForm()
