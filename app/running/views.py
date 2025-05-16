@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
 
+from .forms import FeedbackForm
 from .models import Event
 
 
@@ -46,3 +47,15 @@ class EventDetailView(DetailView):
     model = Event
     template_name = "running/event_detail.html"
     context_object_name = "event"
+
+
+def feedback(request):
+    if request.method == "POST":
+        form = FeedbackForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            # TODO: отправить сообщение
+            return redirect(request.META.get('HTTP_REFERER', '/'))
+    else:
+        form = FeedbackForm()

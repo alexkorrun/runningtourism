@@ -4,3 +4,5 @@ class StrMixin:
             return self.title
         elif hasattr(self, "event_name") and self.event_name:
             return self.event_name
+        elif hasattr(self, "name") and self.name:
+            return self.name

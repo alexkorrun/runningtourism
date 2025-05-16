@@ -9,21 +9,21 @@
         </div>
         <div class="col-12 col-md-8 bg-white p-4 rounded-4 shadow">
             <h4 class="mb-4 text-primary fw-bold text-center text-md-start">Обратная связь</h4>
-            <form>
-                {% csrf_token %}
+            <form method="post" action="{% url 'feedback' %}">
+            {% csrf_token %}
                 <div class="row g-3 align-items-end">
                     <div class="col-12 col-md-6">
-                        <label for="name" class="form-label">Ваше имя</label>
+                        <label for="{{ form.name.id_for_label }}" class="form-label">Ваше имя</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Введите имя" required>
+                            {{ form.name }}
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
-                        <label for="phone" class="form-label">Телефон</label>
+                        <label for="{{ form.phone.id_for_label }}" class="form-label">Телефон</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
-                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required>
+                            {{ form.phone }}
                         </div>
                     </div>
                 </div>
