@@ -5,22 +5,26 @@
 <section class="py-5" style="min-height: 650px;">
     <div class="container">
         <h2 class="text-center text-primary mb-4">События</h2>
-        <form method="get" class="row align-items-center mb-4">
-            <div class="col-md-3 mb-2 mb-md-0">
-                <select name="type" class="form-select" onchange="this.form.submit()">
-                    <option value="">Все</option>
-                    <option value="0" {% if current_type == "0" %}selected{% endif %}>Выполненные</option>
-                    <option value="1" {% if current_type == "1" %}selected{% endif %}>Будущие</option>
-                </select>
+       <form method="get" class="mb-4">
+            <div class="row">
+                <div class="col-md-3 mb-2">
+                    <select name="type" class="form-select" onchange="this.form.submit()">
+                        <option value="">Все</option>
+                        <option value="0" {% if current_type == "0" %}selected{% endif %}>Выполненные</option>
+                        <option value="1" {% if current_type == "1" %}selected{% endif %}>Будущие</option>
+                    </select>
+                </div>
             </div>
-            <div class="col-md-9 text-end">
-                <div class="btn-group" role="group">
-                    {% for year in years %}
-                        <a href="?{% if current_type %}type={{ current_type }}&{% endif %}year={{ year }}"
-                           class="btn btn-outline-primary {% if year|stringformat:"s" == current_year %}active{% endif %}">
-                            {{ year }}
-                        </a>
-                    {% endfor %}
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="btn-group flex-wrap" role="group">
+                        {% for year in years %}
+                            <a href="?{% if current_type %}type={{ current_type }}&{% endif %}year={{ year }}"
+                            class="btn btn-outline-primary {% if year|stringformat:"s" == current_year %}active{% endif %}">
+                                {{ year }}
+                            </a>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </form>

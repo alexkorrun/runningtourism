@@ -29,10 +29,9 @@ class EventView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
         event_type = self.request.GET.get('type')
-
         year_queryset = Event.objects.filter(event_view=0)
+
         if event_type in ['0', '1']:
             year_queryset = year_queryset.filter(event_type=event_type)
 
