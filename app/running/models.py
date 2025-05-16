@@ -7,6 +7,10 @@ class Foto(StrMixin, models.Model):
     title = models.CharField(max_length=255, verbose_name="Название изображения")
     image = models.ImageField(verbose_name="Изображения")
 
+    class Meta:
+        verbose_name = "Изображение"
+        verbose_name_plural = "Изображения"
+
 
 class Event(StrMixin, models.Model):
     EVENT_VIEW_CHOICES = [
@@ -45,6 +49,10 @@ class Event(StrMixin, models.Model):
         verbose_name="Изображения события"
     )
 
+    class Meta:
+        verbose_name = "Событие"
+        verbose_name_plural = "События"
+
 
 class Feedback(StrMixin, models.Model):
     name = models.CharField(
@@ -59,3 +67,7 @@ class Feedback(StrMixin, models.Model):
         null=True,
         verbose_name="Номер телефона"
     )
+
+    class Meta:
+        verbose_name = "Обратная связь"
+        verbose_name_plural = "Обратная связь"
