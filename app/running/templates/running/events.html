@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-<section class="py-5">
+<section class="py-5" style="min-height: 650px;">
     <div class="container">
         <h2 class="text-center text-primary mb-4">События</h2>
         <form method="get" class="row align-items-center mb-4">
@@ -34,7 +34,7 @@
                             <img src="{{ event.event_foto.image.url }}" alt="{{ event.event_name }}"
                                  class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
                         {% else %}
-                            <img src="{% static 'running/default.jpg' %}" alt="Нет изображения"
+                            <img src="{% static 'assets/default.jpg' %}" alt="Нет изображения"
                                  class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
                         {% endif %}
                     </div>

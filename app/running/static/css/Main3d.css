@@ -1,3 +1,56 @@
+footer .footer-flex {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            padding: 20px 40px;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        footer .footer-flex > div {
+            min-width: 200px;
+            flex-grow: 1;
+        }
+        footer .footer-flex > div.map {
+            flex-grow: 2;
+            min-width: 300px;
+        }
+
+        @media (max-width: 768px) {
+            footer .footer-flex {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+            footer .footer-flex > div {
+                min-width: auto;
+                flex-grow: unset;
+                text-align: center;
+            }
+            footer .footer-flex > div.map iframe {
+                height: 250px; /* чуть выше для удобства на мобиле */
+            }
+        }
+
+        /* Хедер: немного отступов и центрирование на маленьких экранах */
+        @media (max-width: 576px) {
+            header nav .container-fluid {
+                flex-wrap: wrap;
+                justify-content: center !important;
+                gap: 10px;
+            }
+            header nav .navbar-brand {
+                justify-content: center;
+                width: 100%;
+            }
+            header nav div:last-child {
+                width: 100%;
+                text-align: center;
+            }
+            header nav div:last-child a {
+                margin: 0 10px;
+            }
+        }
+
 .hero-section {
             perspective: 1000px;
         }

@@ -4,7 +4,6 @@
 {% block content %}
 <div class="container py-5">
     <a href="{% url 'events' %}" class="btn btn-secondary mb-4">← Назад к событиям</a>
-
     <div class="card shadow-sm">
         {% if event.event_foto %}
             <img src="{{ event.event_foto.image.url }}" class="card-img-top" alt="{{ event.event_name }}">
