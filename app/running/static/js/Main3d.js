@@ -3,8 +3,8 @@ const section = document.getElementById("hero"),
 
 section.addEventListener("mousemove", (e) => {
     const { width, height, left, top } = section.getBoundingClientRect(),
-           x = e.clientX - left - width / 2,
-           y = e.clientY - top - height / 2;
+           x = e.clientX - left - width / 3,
+           y = e.clientY - top - height / 3;
 
     const rotateX = (y / height) * -5,
           rotateY = (x / width) * 5;
