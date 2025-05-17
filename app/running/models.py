@@ -14,8 +14,8 @@ class Foto(StrMixin, models.Model):
 
 class Event(StrMixin, models.Model):
     EVENT_VIEW_CHOICES = [
-        (0, "События"),
-        (1, "Проекты"),
+        (0, "Видимое событие"),
+        (1, "Скрытое событие"),
     ]
     EVENT_TYPE_CHOICES = [
         (0, "события"),
