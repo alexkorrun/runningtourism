@@ -14,12 +14,12 @@ class Foto(StrMixin, models.Model):
 
 class Event(StrMixin, models.Model):
     EVENT_VIEW_CHOICES = [
-        (0, "Видимое событие"),
-        (1, "Скрытое событие"),
+        (0, "События"),
+        (1, "Проекты"),
     ]
     EVENT_TYPE_CHOICES = [
-        (0, "выполненное событие"),
-        (1, "будущее событие"),
+        (0, "события"),
+        (1, "проекты"),
     ]
 
     event_view = models.SmallIntegerField(

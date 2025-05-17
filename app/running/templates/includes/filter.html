@@ -1,0 +1,12 @@
+<div class="mb-5">
+    <div class="btn-group w-100" role="group" aria-label="Фильтр по статусу">
+        <a href="{% url 'events' %}?type=0{% if current_year %}&year={{ current_year }}{% endif %}"
+           class="btn btn-outline-primary {% if current_type == '0' %}active{% endif %}">
+            События
+        </a>
+        <a href="{% url 'events' %}?type=1{% if current_year %}&year={{ current_year }}{% endif %}"
+           class="btn btn-outline-primary {% if current_type == '1' %}active{% endif %}">
+            Проекты
+        </a>
+    </div>
+</div>
