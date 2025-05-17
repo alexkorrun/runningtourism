@@ -4,7 +4,6 @@ from . import env_config
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 SECRET_KEY = env_config.CONFIG__SECRET_KEY
 
 DEBUG = env_config.CONFIG__DEBUG
@@ -45,6 +44,8 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
 
                 "app.running.context_processors.feedback_form",
+                "app.running.context_processors.global_filters",
+
             ],
         },
     },

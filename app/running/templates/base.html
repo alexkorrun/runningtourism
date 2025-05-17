@@ -57,14 +57,25 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'home' %}">Главная</a>
             </li>
-             <li class="nav-item">
-                <a class="nav-link" href="{% url 'events' %}">События</a>
+            <li>
+                 <a href="{% url 'events' %}?type=0{% if current_year %}&year={{ current_year }}{% endif %}"
+                    class="nav-link {% if current_type == '0' %}active{% endif %}">
+                        События
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'events' %}?type=1{% if current_year %}&year={{ current_year }}{% endif %}"
+                    class="nav-link {% if current_type == '1' %}active{% endif %}">
+                        Проекты
+                </a>
             </li>
         </ul>
     </div>
 </div>
 {% block content %}{% endblock %}
+
 {% include 'includes/feedback.html' %} 
+
 <footer>
     <div class="footer-flex">
         <div>
@@ -101,7 +112,18 @@
             <h4>Навигация</h4>
             <ul style="list-style: none; padding: 0;">
                 <li><a href="{% url 'home' %}" class="text-decoration-none text-dark">Главная</a></li>
-                <li><a href="{% url 'events' %}" class="text-decoration-none text-dark">События</a></li>
+                <li>
+                     <a href="{% url 'events' %}?type=0{% if current_year %}&year={{ current_year }}{% endif %}"
+                        class="text-decoration-none text-dark {% if current_type == '0' %}active{% endif %}">
+                            События
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'events' %}?type=1{% if current_year %}&year={{ current_year }}{% endif %}"
+                        class="text-decoration-none text-dark {% if current_type == '1' %}active{% endif %}">
+                            Проекты
+                    </a>
+                </li>
             </ul>
         </div>
         <div class="map">
