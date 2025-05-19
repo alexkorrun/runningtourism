@@ -9,4 +9,6 @@ urlpatterns: list[str] = [
     path("events/<int:pk>/", views.EventDetailView.as_view(), name="event_detail"),
 
     path('feedback/', views.feedback, name='feedback'),
+    path("politics/", views.politics, name="politics"),
+    path("contacts/", views.contacts, name="contacts"),
 ]

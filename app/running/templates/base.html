@@ -4,6 +4,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/logo.png' %}">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
@@ -27,27 +28,28 @@
     </div>
 </div>
 <header style="background-color:rgb(244, 242, 242);">
-    <nav class="navbar navbar-light py-2">
-        <div class="container-fluid d-flex justify-content-around align-items-center">
-            <div class="d-flex align-items-center">
-                <a class="navbar-brand d-flex align-items-center" href="/">
-                    <img src="{% static 'assets/logo.png' %}" alt="Логотип" class="logo_main" style="width: 70px;">
-                    <div class="ms-2 d-none d-sm-block"> 
-                        <div class="h5 text-primary mb-0">БЕГОВОЙ ТУРИЗМ</div>
-                        <div class="text-primary" style="font-size: 0.85rem;">Организация дружеских пробегов по всему миру</div>
-                    </div>
-                </a>
-            </div>
-            <div>
-                <a class="text-decoration-none text-dark me-3" data-bs-toggle="offcanvas" href="#menuOffcanvas" role="button" aria-controls="menuOffcanvas">
+    <nav class="navbar navbar-light py-4 p-5">
+        <div class="container-fluid d-flex justify-content-around  align-items-center">
+            <div class="d-flex align-items-center gap-3">
+                <a class="text-decoration-none text-dark" data-bs-toggle="offcanvas" href="#menuOffcanvas" role="button" aria-controls="menuOffcanvas">
                     <i class="bi bi-list fs-4"></i>
                 </a>
-                <a href="#" class="text-decoration-none text-dark"><i class="bi bi-globe fs-4"></i></a>
+                <a href="tel:+79112715554" class="text-decoration-none text-primary" style="font-size: 1.2rem;" title="Позвонить">
+                    <i class="bi bi-telephone-fill"></i>
+                </a>
             </div>
+            <a class="navbar-brand text-center mx-auto" href="/" style="display: flex; flex-direction: column; align-items: center; text-decoration: none;">
+                
+                <div class="h5 text-primary mb-0">БЕГОВОЙ ТУРИЗМ</div>
+                <div class="text-primary" style="font-size: 0.75rem;">Организация и проведение дружеских пробегов в любой точке Земли</div>
+            </a>
+            <a href="#" class="text-decoration-none text-dark">
+               <img src="{% static 'assets/logo.png' %}" alt="Логотип" class="logo_main" style="width: 60px;">
+            </a>
         </div>
     </nav>
 </header>
-<div class="offcanvas offcanvas-end" tabindex="-1" id="menuOffcanvas" aria-labelledby="menuOffcanvasLabel">
+<div class="offcanvas offcanvas-start" tabindex="-1" id="menuOffcanvas" aria-labelledby="menuOffcanvasLabel">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="menuOffcanvasLabel">Навигация</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
@@ -58,24 +60,24 @@
                 <a class="nav-link" href="{% url 'home' %}">Главная</a>
             </li>
             <li>
-                 <a href="{% url 'events' %}?type=0{% if current_year %}&year={{ current_year }}{% endif %}"
-                    class="nav-link {% if current_type == '0' %}active{% endif %}">
-                        События
+                <a href="{% url 'events' %}?type=0{% if current_year %}&year={{ current_year }}{% endif %}"
+                   class="nav-link {% if current_type == '0' %}active{% endif %}">
+                    События
                 </a>
             </li>
             <li>
                 <a href="{% url 'events' %}?type=1{% if current_year %}&year={{ current_year }}{% endif %}"
-                    class="nav-link {% if current_type == '1' %}active{% endif %}">
-                        Проекты
+                   class="nav-link {% if current_type == '1' %}active{% endif %}">
+                    Проекты
                 </a>
+            </li>
+            <li>
+                <a class="nav-link" href="{% url 'contacts' %}">Контакты</a>
             </li>
         </ul>
     </div>
 </div>
 {% block content %}{% endblock %}
-
-{% include 'includes/feedback.html' %} 
-
 <footer>
     <div class="footer-flex">
         <div>
@@ -124,6 +126,7 @@
                             Проекты
                     </a>
                 </li>
+                <li><a href="{% url 'contacts' %}" class="text-decoration-none text-dark">Контакты</a></li>
             </ul>
         </div>
         <div class="map">

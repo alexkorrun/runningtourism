@@ -1,12 +1,24 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/filter.css' %}">
+
 <div class="mb-5">
-    <div class="btn-group w-100" role="group" aria-label="Фильтр по статусу">
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+        <a href="{% url 'home' %}" 
+           class="btn btn-outline-primary custom-nav-btn {% if page == 'home' %}custom-active{% endif %}">
+           Главная
+        </a>
         <a href="{% url 'events' %}?type=0{% if current_year %}&year={{ current_year }}{% endif %}"
-           class="btn btn-outline-primary {% if current_type == '0' %}active{% endif %}">
-            События
+           class="btn btn-outline-primary custom-nav-btn {% if current_type == '0' %}custom-active{% endif %}">
+           События
         </a>
         <a href="{% url 'events' %}?type=1{% if current_year %}&year={{ current_year }}{% endif %}"
-           class="btn btn-outline-primary {% if current_type == '1' %}active{% endif %}">
-            Проекты
+           class="btn btn-outline-primary custom-nav-btn {% if current_type == '1' %}custom-active{% endif %}">
+           Проекты
+        </a>
+        <a href="{% url 'contacts' %}" 
+           class="btn btn-outline-primary custom-nav-btn {% if page == 'contacts' %}custom-active{% endif %}">
+           Контакты
         </a>
     </div>
 </div>

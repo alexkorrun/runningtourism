@@ -5,8 +5,11 @@
 <link rel="stylesheet" href="{% static 'css/Main3d.css' %}">
 
 <main>
-    <section class="hero-section position-relative overflow-hidden" id="hero">
-        <img src="{% static 'assets/main.jpg' %}" 
+    <div class="container mt-5">
+    {% include 'includes/filter.html' %} 
+    </div>
+        <section class="hero-section position-relative overflow-hidden" id="hero">
+        <img src="{% static 'assets/sdsss.jpg' %}" 
              class="img-fluid w-100 hero-image" 
              alt="Главное изображение" 
              style="height: 90vh; object-fit: cover; filter: brightness(70%);"
@@ -17,8 +20,6 @@
         </div>
     </section>
 </main>
-<div class="container mt-5">
-    {% include 'includes/filter.html' %} 
-</div>
+
 <script src="{% static 'js/Main3d.js' %}"></script>
 {% endblock %}
