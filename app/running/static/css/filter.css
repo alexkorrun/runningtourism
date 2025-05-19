@@ -1,0 +1,54 @@
+.custom-nav-btn {
+    padding: 0.4rem 2.6rem;
+    margin: 0 20px;
+    font-size: 0.9rem;
+    transition: all 0.2s ease-in-out;
+    background-color: #0d6efd;
+    color: #fff0f0;
+}
+
+.custom-active {
+    color: white !important;
+    border-color: #dc3545 !important;
+    background-color: #dc3545 !important;
+    box-shadow: 0 0 0 0.1rem rgba(220, 53, 69, 0.25);
+}
+
+.btn-outline-primary.custom-nav-btn:not(.custom-active):hover {
+    color: #fff0f0 !important;
+    border-color: #000 !important;
+    background-color: black !important;
+}
+
+#fixed-preview {
+    position: sticky;
+    top: 100px;
+    z-index: 999;
+    transition: opacity 0.2s ease;
+}
+
+.event-item:hover .event-title,
+.event-item:hover .event-date,
+.event-item.active-item .event-title,
+.event-item.active-item .event-date {
+    color: #dc3545 !important;
+}
+
+.year-btn {
+    background-color: #0d6efd; 
+    color: white;
+    border: none;
+    transition: 0.2s;
+}
+
+.year-btn:hover {
+    background-color: #000;
+    color: white;
+}
+
+.active-year {
+    border-color: #dc3545 !important;
+    background-color: #dc3545 !important;
+    box-shadow: 0 0 0 0.1rem rgba(220, 53, 69, 0.25);
+    color: white !important;
+}

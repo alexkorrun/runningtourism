@@ -4,51 +4,46 @@
 {% block content %}
 <section class="py-5" style="min-height: 650px;">
     <div class="container">
-        <h2 class="text-center text-primary mb-4">События и Проекты</h2>
-
-        {% include 'includes/filter.html' %} 
+        {% include 'includes/filter.html' %}
 
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <form method="get" class="mb-4">
                     <div class="d-flex flex-column gap-2">
-                        <a href="?{% if current_type %}type={{ current_type }}{% endif %}" 
-                        class="btn btn-outline-primary w-100 {% if not current_year %}active{% endif %}">
-                            Все время
-                        </a>
                         {% for year in years %}
                             <a href="?{% if current_type %}type={{ current_type }}&{% endif %}year={{ year }}" 
-                            class="btn btn-outline-primary w-100 {% if year|stringformat:"s" == current_year %}active{% endif %}">
+                            class="btn year-btn w-100 fw-bold {% if year|stringformat:"s" == current_year %}active-year{% endif %}">
                                 {{ year }}
                             </a>
                         {% endfor %}
                     </div>
                 </form>
             </div>
-            <div class="col-md-9">
-                <div class="list-group shadow-sm">
+
+            <div class="col-md-5 position-relative">
+                <div class="list-group shadow-sm position-relative">
                     {% for event in events %}
-                    <a href="{% url 'event_detail' event.pk %}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center gap-4 py-3">
-                        <div class="flex-grow-1">
-                            <h5 class="mb-1">{{ event.event_name }}</h5>
-                            <small class="text-muted">{{ event.event_date1 }} – {{ event.event_date2 }}</small>
-                        </div>
-                        <div class="flex-shrink-0">
-                            {% if event.event_foto %}
-                                <img src="{{ event.event_foto.image.url }}" alt="{{ event.event_name }}"
-                                     class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
-                            {% else %}
-                                <img src="{% static 'assets/default.jpg' %}" alt="Нет изображения"
-                                     class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
-                            {% endif %}
-                        </div>
-                    </a>
+                        <a href="{% url 'event_detail' event.pk %}" 
+                           target="_blank"
+                           class="list-group-item list-group-item-action d-flex justify-content-between align-items-center gap-4 py-3 position-relative event-item {% if forloop.first %}active-item{% endif %}"
+                           data-img="{% if event.event_foto %}{{ event.event_foto.image.url }}{% else %}{% static 'assets/default.jpg' %}{% endif %}">
+                            <div class="flex-grow-1 text-content">
+                                <h5 class="mb-1 event-title">{{ event.event_name }}</h5>
+                            </div>
+                        </a>
                     {% empty %}
                         <div class="alert alert-warning mt-3">Событий не найдено по фильтрам.</div>
                     {% endfor %}
                 </div>
             </div>
+            <div class="col-md-5">
+                <div id="fixed-preview" class="d-none">
+                    <img src="" alt="Превью" class="img-fluid rounded shadow"
+                         style="width: 100%; max-width: 800px; max-height: 450px; object-fit: cover;">
+                </div>
+            </div>
         </div>
     </div>
 </section>
+<script src="{% static 'js/events.js' %}"></script>
 {% endblock %}

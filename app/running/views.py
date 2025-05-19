@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.urls import reverse
 from django.views.generic import ListView, DetailView
 
 from .forms import FeedbackForm
@@ -7,7 +8,11 @@ from .models import Event
 
 
 def main(request):
-    return render(request, "running/main.html")
+    context = {
+        "title": "Главная",
+        "page": "home"
+    }
+    return render(request, "running/main.html", context)
 
 
 class EventView(ListView):
@@ -24,7 +29,6 @@ class EventView(ListView):
             queryset = queryset.filter(event_type=event_type)
         if event_year and event_year.isdigit():
             queryset = queryset.filter(event_date1__year=event_year)
-
         return queryset.order_by('-event_date1')
 
     def get_context_data(self, **kwargs):
@@ -40,6 +44,11 @@ class EventView(ListView):
 
         context['current_year'] = self.request.GET.get('year')
         context['current_type'] = event_type
+
+        if event_type == '0':
+            context['title'] = "События"
+        elif event_type == '1':
+            context['title'] = "Проекты"
         return context
 
 
@@ -47,6 +56,15 @@ class EventDetailView(DetailView):
     model = Event
     template_name = "running/event_detail.html"
     context_object_name = "event"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        event = self.get_object()
+
+        context['type'] = self.request.GET.get('type', '')
+        context['year'] = self.request.GET.get('year', '')
+        context['title'] = event.event_name
+        return context
 
 
 def feedback(request):
@@ -62,3 +80,15 @@ def feedback(request):
             return redirect(request.META.get('HTTP_REFERER', '/'))
     else:
         form = FeedbackForm()
+
+
+def politics(request):
+    return render(request, "running/politics.html", {"title": "Политика конфиденциальности"})
+
+
+def contacts(request):
+    context = {
+        "title": "Контакты",
+        'page': "contacts"
+    }
+    return render(request, "running/contacts.html", context)
