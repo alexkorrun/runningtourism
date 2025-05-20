@@ -7,9 +7,9 @@
         {% include 'includes/filter.html' %}
 
         <div class="row">
-            <div class="col-md-2">
+           <div class="col-md-2">
                 <form method="get" class="mb-4">
-                    <div class="d-flex flex-column gap-2">
+                    <div class="d-flex flex-column gap-2" style="max-height: 400px; overflow-y: auto;">
                         {% for year in years %}
                             <a href="?{% if current_type %}type={{ current_type }}&{% endif %}year={{ year }}" 
                             class="btn year-btn w-100 fw-bold {% if year|stringformat:"s" == current_year %}active-year{% endif %}">
@@ -21,14 +21,14 @@
             </div>
 
             <div class="col-md-5 position-relative">
-                <div class="list-group shadow-sm position-relative">
+                <div class="list-group shadow-sm position-relative" style="max-height: 500px; overflow-y: auto;">
                     {% for event in events %}
                         <a href="{% url 'event_detail' event.pk %}" 
-                           target="_blank"
-                           class="list-group-item list-group-item-action d-flex justify-content-between align-items-center gap-4 py-3 position-relative event-item {% if forloop.first %}active-item{% endif %}"
-                           data-img="{% if event.event_foto %}{{ event.event_foto.image.url }}{% else %}{% static 'assets/default.jpg' %}{% endif %}">
+                        target="_blank"
+                        class="list-group-item list-group-item-action d-flex justify-content-between align-items-center gap-4 py-2 position-relative event-item {% if forloop.first %}active-item{% endif %}"
+                        data-img="{% if event.event_foto %}{{ event.event_foto.image.url }}{% else %}{% static 'assets/default.jpg' %}{% endif %}">
                             <div class="flex-grow-1 text-content">
-                                <h5 class="mb-1 event-title">{{ event.event_name }}</h5>
+                                <h5 class="mb-1 event-title">{{ event.event_name }} год</h5>
                             </div>
                         </a>
                     {% empty %}
@@ -38,12 +38,17 @@
             </div>
             <div class="col-md-5">
                 <div id="fixed-preview" class="d-none">
-                    <img src="" alt="Превью" class="img-fluid rounded shadow"
+                    <img src="" alt="Превью" class="img-fluid rounded shadow mediaModile"
                          style="width: 100%; max-width: 800px; max-height: 450px; object-fit: cover;">
                 </div>
             </div>
         </div>
     </div>
 </section>
+<style>
+@media (max-width: 766px){
+    .mediaModile {display: none;}
+}
+</style>
 <script src="{% static 'js/events.js' %}"></script>
 {% endblock %}

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-<div class="container py-5">
+<div class="container py-5" style="min-height: 650px;">
     <div class="card shadow border-0 rounded-4 overflow-hidden">
         <div class="row g-0 flex-column flex-md-row">
             {% if event.event_foto %}
@@ -26,11 +26,20 @@
                     <p class="mb-4">{{ event.event_description }}</p>
 
                     {% if event.event_report %}
-                        <h5 class="text-primary fw-semibold">Наш отчёт</h5>
+                        <h5 class="text-primary fw-semibold">
+                            {% if event.event_type == 0 %}
+                                Отчет
+                            {% elif event.event_type == 1 %}
+                                Анонс
+                            {% else %}
+                                Отчет
+                            {% endif %}
+                        </h5>
                         <div class="bg-light p-3 rounded-3 border mb-4">
                             {{ event.event_report }}
                         </div>
                     {% endif %}
+
 
                     <div class="d-flex flex-wrap gap-3">
                         <a href="{{ event.event_route }}" target="_blank"
