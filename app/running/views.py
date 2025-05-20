@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.urls import reverse
 from django.views.generic import ListView, DetailView
 
 from .forms import FeedbackForm
@@ -92,3 +91,11 @@ def contacts(request):
         'page': "contacts"
     }
     return render(request, "running/contacts.html", context)
+
+
+def feedback_page(request):
+    context = {
+        "title": "Обратная связь",
+        "page": "feedback_page"
+    }
+    return render(request, "running/feedback_page.html", context)

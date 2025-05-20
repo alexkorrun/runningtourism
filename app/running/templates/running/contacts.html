@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="container mt-5">
+    <div class="container mt-5" style="min-height: 600px; overflow-x: hidden;">
         {% include 'includes/filter.html' %} 
 
-        <div class="contact-info mt-4">
+        <div class="contact-info mt-5">
             <h4>Контакты</h4>
             <p>
                 <i class="bi bi-telephone-fill"></i>
@@ -36,5 +36,4 @@
             </div>
         </div>
     </div>
-{% include 'includes/feedback.html' %} 
 {% endblock %}

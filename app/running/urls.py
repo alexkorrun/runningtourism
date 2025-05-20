@@ -11,4 +11,5 @@ urlpatterns: list[str] = [
     path('feedback/', views.feedback, name='feedback'),
     path("politics/", views.politics, name="politics"),
     path("contacts/", views.contacts, name="contacts"),
+    path("feedback-page/", views.feedback_page, name="feedback_page"),
 ]
