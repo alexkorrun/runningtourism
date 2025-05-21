@@ -2,7 +2,9 @@
 {% load static %}
 
 {% block content %}
+
 <div class="container py-5" style="min-height: 650px;">
+    {% include 'includes/filter.html' %}
     <div class="card shadow border-0 rounded-4 overflow-hidden">
         <div class="row g-0 flex-column flex-md-row">
             {% if event.event_foto %}
@@ -19,7 +21,7 @@
                     <h2 class="card-title fw-bold mb-2">{{ event.event_name }}</h2>
                     <p class="text-muted mb-4">
                         <i class="bi bi-calendar-event me-1"></i>
-                        {{ event.event_year }}
+                        <span class="fw-bold" style="margin-right: 10px;">{{ event.event_year }}</span>
                         {{ event.event_date1 }} – {{ event.event_date2 }}
                     </p>
 
@@ -36,14 +38,11 @@
                                 Отчет
                             {% endif %}
                         </h5>
-                        <div class="bg-light p-3 rounded-3 border mb-4"
-     style="max-height: 300px; overflow-y: auto;">
-    {{ event.event_report }}
-</div>
-
+                <div class="bg-light p-3 rounded-3 border mb-4"
+                    style="max-height: 300px; overflow-y: auto;">
+                    {{ event.event_report }}
+            </div>
                     {% endif %}
-
-
                     <div class="d-flex flex-wrap gap-3">
                         <a href="{{ event.event_route }}" target="_blank"
                            class="btn btn-outline-secondary d-flex align-items-center gap-2">
@@ -67,4 +66,5 @@
         </div>
     </div>
 </div>
+<script src="{% static 'js/events.js' %}"></script>
 {% endblock %}
