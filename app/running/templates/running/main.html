@@ -5,14 +5,14 @@
 <link rel="stylesheet" href="{% static 'css/Main3d.css' %}">
 
 <main>
-    <div class="container mt-5">
+    <div class="container mt-5 position-absolute" style="z-index: 2; left: 50%; transform: translate(-50%);">
     {% include 'includes/filter.html' %} 
     </div>
         <section class="hero-section position-relative overflow-hidden" id="hero">
         <img src="{% static 'assets/sdsss.jpg' %}" 
              class="img-fluid w-100 hero-image" 
              alt="Главное изображение" 
-             style="height: 90vh; object-fit: cover; filter: brightness(70%); opacity: 0.8;"
+             style="height: 88vh; object-fit: cover; filter: brightness(70%); opacity: 0.8;"
         >
         <div class="position-absolute top-50 start-50 translate-middle text-center text-white hero-content">
             <h1 class="display-3 fw-bold mb-3">Беговые путешествия по всему миру</h1>
