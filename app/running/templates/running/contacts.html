@@ -1,39 +1,61 @@
 {% extends 'base.html' %}
+{% load static %}
+
 
 {% block content %}
-    <div class="container mt-5" style="min-height: 600px; overflow-x: hidden;">
-        {% include 'includes/filter.html' %} 
+<link rel="stylesheet" href="{% static 'css/fedback.css' %}">
 
-        <div class="contact-info mt-5">
-            <h4>Контакты</h4>
-            <p>
-                <i class="bi bi-telephone-fill"></i>
-                <a href="tel:+79112715554" class="text-decoration-none text-dark">+7 (911) 271-55-54</a>
-            </p>
-            <p>
-                <i class="bi bi-envelope-fill"></i>
-                <a href="mailto:alexkorrun@mail.ru" class="text-decoration-none text-dark">alexkorrun@mail.ru</a>
-            </p>
-            <p>
-                <i class="bi bi-geo-alt-fill"></i>
-                <a href="https://yandex.ru/maps/?text=г.%20Санкт-Петербург,%20ул.Демьяна%20Бедного,%2012,%20к.1"
-                target="_blank" rel="noopener" class="text-decoration-none text-dark">
-                    г. Санкт-Петербург, ул.Демьяна Бедного, 12, к.1
-                </a>
-            </p>
-            <div class="d-flex gap-3 align-items-center mt-3 fs-4">
-                <a href="https://www.youtube.com/channel/UCN33vSR-3nDw4greEiPBkKw" target="_blank" rel="noopener" style="color: #FF0000;">
-                    <i class="bi bi-youtube"></i>
-                </a>
-                <a href="https://vk.com/club125871052?from=groups" target="_blank" rel="noopener" style="color: #4C75A3;">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="1em" height="1em">
-                        <path d="M12 0C5.373 0 0 5.373 0 12c0 6.628 5.373 12 12 12 6.627 0 12-5.372 12-12 0-6.627-5.373-12-12-12zm5.634 17.503h-1.288c-.431 0-.557-.28-.82-.617-.55-.729-1.32-1.748-1.68-2.046-.192-.169-.264-.223-.403-.223-.134 0-.216.08-.216.248 0 .687.008 1.037-.03 1.138-.089.266-.432.458-1.057.458-.975 0-1.758-.618-2.64-1.924-.554-.825-1.103-1.772-1.33-2.1-.103-.143-.198-.216-.3-.216-.04 0-.08.008-.08.08 0 .278.017.542.017.673v2.94c0 .3-.07.37-.343.37H6.237c-.274 0-.4-.103-.4-.37v-6.638c0-.204.108-.29.392-.29h1.43c.23 0 .32.057.42.234.55.823 1.288 2.07 1.575 2.52.244.382.326.53.42.53.115 0 .18-.085.18-.254 0-.6.02-1.044-.015-1.198-.06-.238-.35-.518-.983-1.07-1.063-.936-1.42-1.44-1.22-1.44h4.085c.252 0 .33.055.474.3.176.303.73 1.15 1.042 1.743.096.22.18.405.236.537.038.086.096.168.162.168.083 0 .15-.082.15-.234 0-.355-.007-1.12-.007-1.565 0-.252.118-.37.39-.37h1.232c.25 0 .386.12.386.38v4.976c0 .27-.136.39-.402.39z"/>
-                    </svg>
-                </a>
-                <a href="https://t.me/alexkorrun" target="_blank" rel="noopener" style="color: #0088CC; margin-top: 4px;">
-                    <i class="bi bi-telegram "></i>
-                </a>
+<div class="container mt-5" style="min-height: 600px; overflow-x: hidden;">
+    {% include 'includes/filter.html' %} 
+
+    <div class="contact-info mt-5">
+        <h4>Контакты</h4>
+
+        <div class="row align-items-start">
+            <!-- Контакты слева -->
+            <div class="col-12 col-md-10">
+                <p>
+                    <i class="bi bi-telephone-fill"></i>
+                    <a href="tel:+79112715554" class="text-decoration-none text-dark">+7 (911) 271-55-54</a>
+                </p>
+                <p>
+                    <i class="bi bi-envelope-fill"></i>
+                    <a href="mailto:alexkorrun@mail.ru" class="text-decoration-none text-dark">alexkorrun@mail.ru</a>
+                </p>
+                <p>
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <a href="https://yandex.ru/maps/?text=г.%20Санкт-Петербург,%20ул.Демьяна%20Бедного,%2012,%20к.1"
+                       target="_blank" rel="noopener" class="text-decoration-none text-dark">
+                        г. Санкт-Петербург, ул.Демьяна Бедного, 12, к.1
+                    </a>
+                </p>
+
+                <div class="d-flex gap-3 align-items-center mt-3 fs-4">
+                    <a href="https://www.youtube.com/channel/UCN33vSR-3nDw4greEiPBkKw" target="_blank" rel="noopener" style="color: #FF0000;">
+                        <i class="bi bi-youtube"></i>
+                    </a>
+                    <a href="https://vk.com/club125871052?from=groups" target="_blank" rel="noopener" style="color: #4C75A3;">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="1em" height="1em">
+                            <path d="M12 0C5.373 0 0 5.373 0 12c0 6.628 5.373 12 12 12 6.627 0 12-5.372 12-12 0-6.627-5.373-12-12-12zm5.634 17.503h-1.288c-.431 0-.557-.28-.82-.617-.55-.729-1.32-1.748-1.68-2.046-.192-.169-.264-.223-.403-.223-.134 0-.216.08-.216.248 0 .687.008 1.037-.03 1.138-.089.266-.432.458-1.057.458-.975 0-1.758-.618-2.64-1.924-.554-.825-1.103-1.772-1.33-2.1-.103-.143-.198-.216-.3-.216-.04 0-.08.008-.08.08 0 .278.017.542.017.673v2.94c0 .3-.07.37-.343.37H6.237c-.274 0-.4-.103-.4-.37v-6.638c0-.204.108-.29.392-.29h1.43c.23 0 .32.057.42.234.55.823 1.288 2.07 1.575 2.52.244.382.326.53.42.53.115 0 .18-.085.18-.254 0-.6.02-1.044-.015-1.198-.06-.238-.35-.518-.983-1.07-1.063-.936-1.42-1.44-1.22-1.44h4.085c.252 0 .33.055.474.3.176.303.73 1.15 1.042 1.743.096.22.18.405.236.537.038.086.096.168.162.168.083 0 .15-.082.15-.234 0-.355-.007-1.12-.007-1.565 0-.252.118-.37.39-.37h1.232c.25 0 .386.12.386.38v4.976c0 .27-.136.39-.402.39z"/>
+                        </svg>
+                    </a>
+                    <a href="https://t.me/alexkorrun" target="_blank" rel="noopener" style="color: #0088CC; margin-top: 4px;">
+                        <i class="bi bi-telegram"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Логотип справа -->
+            <div class="col-12 col-md-2 text-center text-md-start mb-3 mb-md-0">
+                <img src="{% static 'assets/logo.png' %}" alt="Логотип" class="img-fluid spin-animation" style="max-width: 120px;">
             </div>
         </div>
+
+        <!-- Карта снизу -->
+        <div class="map mt-4">
+            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A93ccce69b227863b38ead1cbd07b10ead1c64e70c9050bd29063a9b110bbe642&amp;source=constructor"
+                    width="100%" height="200" frameborder="0"></iframe>
+        </div>
     </div>
+</div>
 {% endblock %}
