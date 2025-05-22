@@ -26,8 +26,12 @@ class EventView(ListView):
 
         if event_type in ['0', '1']:
             queryset = queryset.filter(event_type=event_type)
+
         if event_year and event_year.isdigit():
             queryset = queryset.filter(event_date1__year=event_year)
+
+        if event_type == '1':
+            return queryset.order_by('event_date1')
         return queryset.order_by('-event_date1')
 
     def get_context_data(self, **kwargs):
@@ -37,17 +41,17 @@ class EventView(ListView):
 
         if event_type in ['0', '1']:
             year_queryset = year_queryset.filter(event_type=event_type)
-
         years = year_queryset.dates('event_date1', 'year')
-        context['years'] = sorted({d.year for d in years}, reverse=True)
+
+        if event_type == '1':
+            context['years'] = sorted({d.year for d in years})
+        else:
+            context['years'] = sorted({d.year for d in years}, reverse=True)
 
         context['current_year'] = self.request.GET.get('year')
         context['current_type'] = event_type
 
-        if event_type == '0':
-            context['title'] = "События"
-        elif event_type == '1':
-            context['title'] = "Проекты"
+        context['title'] = "События" if event_type == '0' else "Проекты"
         return context
 
 

@@ -24,22 +24,26 @@ class Event(StrMixin, models.Model):
 
     event_view = models.SmallIntegerField(
         choices=EVENT_VIEW_CHOICES,
+        blank=True,
+        null=True,
         verbose_name="Видимость события"
     )
     event_type = models.SmallIntegerField(
         choices=EVENT_TYPE_CHOICES,
+        blank=True,
+        null=True,
         verbose_name="Тип события"
     )
 
-    event_year = models.IntegerField(verbose_name="Год события")
-    event_date1 = models.DateField(verbose_name="Дата начала")
-    event_date2 = models.DateField(verbose_name="Дата конца")
-    event_name = models.CharField(max_length=255, verbose_name="Названия события")
-    event_description = models.TextField(verbose_name="Описания события")
-    event_video = models.URLField(blank=True, verbose_name="Ссылка на видео")
-    event_album = models.URLField(blank=True, verbose_name="Ссылка на фотоальбом")
-    event_route = models.URLField(blank=True, verbose_name="Ссылка на маршрут")
-    event_report = models.TextField(blank=True, verbose_name="Отчет события")
+    event_year = models.IntegerField(blank=True, null=True, verbose_name="Год события")
+    event_date1 = models.DateField(blank=True, null=True, verbose_name="Дата начала")
+    event_date2 = models.DateField(blank=True, null=True, verbose_name="Дата конца")
+    event_name = models.CharField(max_length=255, blank=True, null=True, verbose_name="Названия события")
+    event_description = models.TextField(blank=True, null=True, verbose_name="Описания события")
+    event_video = models.URLField(blank=True, null=True, verbose_name="Ссылка на видео")
+    event_album = models.URLField(blank=True, null=True, verbose_name="Ссылка на фотоальбом")
+    event_route = models.URLField(max_length=500, blank=True, null=True, verbose_name="Ссылка на маршрут")
+    event_report = models.TextField(blank=True, null=True, verbose_name="Отчет события")
 
     event_foto = models.ForeignKey(
         Foto,
